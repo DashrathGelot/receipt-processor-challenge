@@ -1,0 +1,21 @@
+local:
+  server:
+    port: 8080
+server:
+  error:
+    include-message: always
+
+point:
+  rules:
+    total:
+      roundDollar: 50
+      multiple: 0.25
+      multipleP: 25
+    twoItem: 5
+    descLenMultiply: 3
+    priceBy: 0.2
+    purchase:
+      oddDate: 6
+      time2to4: 10
+      timeStart: 14
+      timeEnd: 16
