@@ -36,4 +36,4 @@ cd /receipt-processor-challenge
 
 ### Guides
 
-- 
+- Process Receipt
