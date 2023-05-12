@@ -36,4 +36,56 @@ cd /receipt-processor-challenge
 
 ### Guides
 
-- Process Receipt
+#### Process Receipt
+```curl
+POST http://localhost:8080/receipts/process
+```
+body:
+```json
+{
+  "retailer": "M&M Corner Market",
+  "purchaseDate": "2022-03-20",
+  "purchaseTime": "14:33",
+  "items": [
+    {
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    },{
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    },{
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    },{
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    }
+  ],
+  "total": "9.00"
+}
+```
+Note: here in json object all fields are required otherwise it will send error message
+- here handled validation as well
+
+Console:
+```json
+{
+    "id": "b7bd85bc-e1e2-4a03-b61a-d6d072a36c00"
+}
+```
+
+#### Get Points
+```curl
+GET http://localhost:8080/receipts/b7bd85bc-e1e2-4a03-b61a-d6d072a36c00/points
+```
+Console:
+```json
+{
+    "points": 109
+}
+```
+
+- here I have handled wrong id scenario as well
+
+
+NOTE: URL is HTTP not HTTPS, otherwise it is fallback to SSL

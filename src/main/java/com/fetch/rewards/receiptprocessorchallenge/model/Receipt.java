@@ -5,16 +5,14 @@ import org.springframework.lang.NonNull;
 import java.util.List;
 
 public class Receipt {
-    @NonNull
     private final String retailer;
-    @NonNull
     private final String purchaseDate;
-    @NonNull
     private final String purchaseTime;
-    @NonNull
     private final String total;
-    @NonNull
     private final List<Item> items;
+
+    private long points;
+    private boolean isCalculated;
 
     public Receipt(String retailer, String purchaseDate, String purchaseTime, String total, List<Item> items) {
         this.retailer = retailer;
@@ -44,14 +42,31 @@ public class Receipt {
         return items;
     }
 
+    public long getPoints() {
+        return points;
+    }
+
+    public void setPoints(long points) {
+        this.points = points;
+    }
+
+    public boolean isCalculated() {
+        return isCalculated;
+    }
+
+    public void setCalculated(boolean calculated) {
+        isCalculated = calculated;
+    }
+
     @Override
     public String toString() {
         return "Receipt{" +
                 "retailer='" + retailer + '\'' +
                 ", purchaseDate='" + purchaseDate + '\'' +
                 ", purchaseTime='" + purchaseTime + '\'' +
-                ", total=" + total +
+                ", total='" + total + '\'' +
                 ", items=" + items +
+                ", points=" + points +
                 '}';
     }
 }

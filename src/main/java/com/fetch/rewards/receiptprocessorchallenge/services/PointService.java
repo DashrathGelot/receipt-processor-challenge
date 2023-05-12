@@ -87,14 +87,22 @@ public class PointService {
     }
 
     private long getPointsByReceipt(Receipt receipt) {
+        if (receipt.isCalculated()) {
+            logger.info("Return cached calculated points");
+            return receipt.getPoints();
+        }
+        logger.info("Calculating Points");
         double total = validationService.getValidDoubleValue(receipt.getTotal());
         LocalDate purchaseDate = validationService.getValidDate(receipt.getPurchaseDate());
 
-        return getPointsByTotal(total) +
+        long points = getPointsByTotal(total) +
                 getPointsByStr(receipt.getRetailer()) +
                 getPointsByDate(purchaseDate) +
                 getPointsByTime(receipt.getPurchaseTime()) +
                 getPointsByItems(receipt.getItems());
+        receipt.setPoints(points);
+        receipt.setCalculated(true);
+        return points;
     }
 
     public long getPoints(String id) {
