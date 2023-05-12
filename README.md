@@ -89,3 +89,9 @@ Console:
 
 
 NOTE: URL is HTTP not HTTPS, otherwise it is fallback to SSL
+
+
+### Service Architecture
+
+
+![fetch-reward.drawio.png](./fetch-reward.drawio.png)

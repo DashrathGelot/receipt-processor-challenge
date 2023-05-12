@@ -28,8 +28,8 @@ public class ReceiptController {
 
     @GetMapping("/{id}/points")
     public Map<String, Long> fetchPoints(@PathVariable String id) {
-        Map<String, Long> points = new HashMap<>();
         try {
+            Map<String, Long> points = new HashMap<>();
             points.put("points", pointService.getPoints(id));
             return points;
         } catch (Exception e) {
@@ -40,9 +40,9 @@ public class ReceiptController {
 
     @PostMapping("/process")
     public Map<String, String> processReceipts(@RequestBody Receipt receipt) {
-        Map<String, String> receiptId = new HashMap<>();
         try {
             validationService.validateReceipt(receipt);
+            Map<String, String> receiptId = new HashMap<>();
             receiptId.put("id", receiptService.processReceipt(receipt));
             return receiptId;
         } catch (Exception e) {
